@@ -2,9 +2,11 @@
 import os
 import datetime
 import json
-BASE_PATH= os.path.join("C:/Users/Vince/Documents/Pythonprogram/budgetplaner") + "/"
+from colorama import init, Fore, Style
+BASE_PATH = os.path.join(os.getcwd(), "Budget-") #Skapar en mapp som heter "Budget-'namn'"
+os.makedirs(BASE_PATH, exist_ok=True)
 
-def budget():
+def budget():                               #Menyval i print-format. Riktiga menyn är längst ner.
     print("\n***Budgetmeny***\n" \
     "1. Skapa en ny månadsbudget\n" \
     "2. Öppna befintlig budget\n" \
@@ -57,6 +59,8 @@ def månadsbudget_meny():
     entry14={"Djur": djur}
     entry15={"Mobiltelefon": mobil}
 
+
+#Nedastående variabler används ej men var tänkta att användas i en utökad version av programmet.
     u1=("Det verkar som om dina totala utgifter är högre än din inkomst den här månaden,"
         "Du har ett underskott på ",resterande,"Kr. Kolla igenom och håll koll på utgifterna och stryp dem innan det spårar ur.")
     u2=("Din boendekostnad är mer än 30% av din lön. Kika om du kan förhandla om bättre lånevillkor med banken.")
@@ -73,8 +77,8 @@ def månadsbudget_meny():
     u6=("Höga kostnader för telefon eller netflix-abonnemang kan snabbt bli en stor hög av utgifter om man inte har koll på dem. Kolla igenom alla dina\n",
         "abonnemang det vill säga; Streamingtjänster, bredband, telefon, matlådor till dörren, m.m.")
 
-    with open(BASE_PATH + f"{namn}.jsonl", "a", encoding="utf-8") as f:
-            
+    with open(BASE_PATH + f"{namn}.json", "a", encoding="utf-8") as f:
+                                                                         #Budgetlistan
             f.write(json.dumps(mån, ensure_ascii=False) + "\n")
             f.write(json.dumps(inc, ensure_ascii=False) + "\n")
             
@@ -97,29 +101,29 @@ def månadsbudget_meny():
             f.write(json.dumps(f"Då har du {resterande} Kr kvar till sparande och annat.", ensure_ascii=False) + "\n")
             print("Budget skapad..")
 
-            if total_utgift>lön:
-                f.write(json.dumps(u1, ensure_ascii=False) + "\n")
-            if boende>lön%0.35:
-                f.write(json.dumps(u2, ensure_ascii=False) + "\n")
-            if fordon>5000:
-                f.write(json.dumps(u3, ensure_ascii=False) + "\n")
-            if lån>2000:
-                f.write(json.dumps(u4, ensure_ascii=False) + "\n")
-            if godis>1000:
-                f.write(json.dumps(u5, ensure_ascii=False) + "\n")
-            if mobil>1000:
-                f.write(json.dumps(u6, ensure_ascii=False) + "\n")
+            #if total_utgift>lön:
+                #f.write(json.dumps(u1, ensure_ascii=False) + "\n") Används ej!
+            #if boende>lön%0.35:
+                #f.write(json.dumps(u2, ensure_ascii=False) + "\n")
+            #if fordon>5000:
+                #f.write(json.dumps(u3, ensure_ascii=False) + "\n")
+            #if lån>2000:
+                #f.write(json.dumps(u4, ensure_ascii=False) + "\n")
+            #if godis>1000:
+                #f.write(json.dumps(u5, ensure_ascii=False) + "\n")
+            #if mobil>1000:
+                #f.write(json.dumps(u6, ensure_ascii=False) + "\n")
     
-while True:
+while True:       #Här är menyn för budget-delen som låter användaren välja menyval med siffror.
     budget()
     menyval=(int(input("Ange ett menyval mellan 1-4 ")))
 
     if menyval==1:
         månadsbudget_meny()
     if menyval==2:
-        print("Öppna befintlig budget")
+        print("Öppna befintlig budget... kommer i senare version")
     if menyval==3:
-        print("Nytt sparmål")
+        print("Nytt sparmål... kommer i senare version")
     if menyval==4:
         print("Återgår till huvudmenyn...")
         import main

@@ -1,9 +1,10 @@
 #loginsidan. Om en användare inte finns så kan man skapa ett konto. Man loggar in med ett lösenord och ett användarnamn.
 import os
-BASE_PATH= os.path.join("C:/Users/Vince/Documents/Pythonprogram/budgetplaner") + "/"
+BASE_PATH = os.path.join(os.getcwd(), "Users-") #Här sparas användaruppgifterna.
+os.makedirs(BASE_PATH, exist_ok=True)
 
 
-def login():
+def login(): #Inloggfunktion med felhantering.
     print("\n--- Logga in till Budgetplaner ---")
     user = input("Ange ditt namn: ").strip()
     try:
@@ -25,7 +26,7 @@ def login():
         print("Användarfilen kunde inte hittas.")
         return None
         
-def nytt_konto():
+def nytt_konto(): #Funktion för att skapa nytt konto.
     import os
     user=(input("Ange ett användarnamn: ")).strip()
     password=(input("Ange ett lösenord: ")).strip()
@@ -35,7 +36,7 @@ def nytt_konto():
             print(f"Användaren {user} är nu skapad!")
 
 
-while True:
+while True: #Inlogg-meny
     print("***Inloggnings-sida***\n" \
     "1. Logga in\n" \
     "2. Skapa konto\n" \

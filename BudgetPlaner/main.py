@@ -1,4 +1,4 @@
-#Ett program som håller reda på månadsbudget, räknar och som dessutom kan komma med förslag.
+#Main-filen i programmet. Egentligen bara en meny för att välja dest.
 
 import math
 

@@ -2,9 +2,11 @@
 
 import os
 import datetime
-BASE_PATH= os.path.join("C:/Users/Vince/Documents/Pythonprogram/budgetplaner") + "/"
+from colorama import init, Fore, Style
+BASE_PATH = os.path.join(os.getcwd(), "Dagbok-") #Skapar en mapp som heter "Dagbok-'namn'".
+os.makedirs(BASE_PATH, exist_ok=True)
 
-def ny_dagbok():
+def ny_dagbok(): #Skriv ny dagbok, finns ingen fil skapas det en. Nya entrys läggs till under föregående.
             namn=input("Ange ditt användarnamn: \n").strip()
             cont=input("Skriv inlägg: \n")
             x=datetime.datetime.now()
@@ -15,13 +17,13 @@ def ny_dagbok():
                 print("Inlägg skapat..")
 
 def open_d():
-            namn=input("Ange ditt användarnamn: ").strip()
+            namn=input("Ange ditt användarnamn: ").strip() #Öppna dagbok
             f = open(BASE_PATH + f"{namn}.txt")
             print(f.read())
             f.close()
 
 def remove_d():
-        namn = input("Ange ditt användarnamn: ").strip()
+        namn = input("Ange ditt användarnamn: ").strip() # Radera dagbok
         fil = os.path.join(BASE_PATH, f"{namn}.txt")
 
         if os.path.exists(fil):
@@ -31,7 +33,7 @@ def remove_d():
                 print("Filen hittades inte, har du verkligen skrivit rätt filnamn?")
                          
 while True:
-        print("\n---Dagboksmeny---\n",
+        print("\n---Dagboksmeny---\n", #Meny för dagboksdel
         "1. Nytt dagboksinlägg\n",
         "2. Öppna dagbok\n",
         "3. Radera dagbok\n",
