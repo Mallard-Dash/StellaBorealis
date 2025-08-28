@@ -1,0 +1,7 @@
+This program is only available in Swedish atm.
+
+Detta är Budgetplaner. Ett program med inloggningsfunktion som sparar användarnamn och lösenord i en fil och sen hämtar relevant information för att logga in en användare.
+Tanken bakom hela programmet är att vässa mina kunskaper i python och för att jag tycker det är kul att skapa nya saker som man också kan ha nytta av. 
+
+Jag är inte helt 100 färdig med hela programmet än. Det finns funktioner i "finance-tools" som inte är helt klara än, sen finns det förmodligen nån bugg som jag inte upptäckt än. 
+Gör du det får du hemskt gärna säga till :)
