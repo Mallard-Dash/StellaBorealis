@@ -1,6 +1,8 @@
 #Main-filen i programmet. Egentligen bara en meny för att välja dest.
 
 import math
+import colorama
+from colorama import init, Fore, Style
 
 def main_menu():
     print("\n***Huvudmeny***\n" \
@@ -8,7 +10,8 @@ def main_menu():
     "2. Ekonomiska verktyg\n" \
     "3. Bilkostnader\n" \
     "4. Dagbok\n" \
-    "5. Logga ut\n")
+    "5. Verktyg\n" \
+    "6. Logga ut\n")
 
 
 while True:
@@ -23,6 +26,9 @@ while True:
     if menyval==4:
         import dagbok
     if menyval==5:
-        print("Du är nu utloggad...")
+        import tools
+    if menyval==6:
+        print(Fore.YELLOW+("Du är nu utloggad..."))
+        Fore.RESET
         import login
     

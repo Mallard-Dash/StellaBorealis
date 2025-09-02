@@ -1,7 +1,11 @@
 #Den programdel som ansvarar för finansverktyg. Tanken är att hjälpa användaren med ekonomiska råd.
 import colorama
 import math
+import json
+import os
 from colorama import init, Fore, Style
+BASE_PATH = os.path.join(os.getcwd(), "Budget-") #Skapar en mapp som heter "Budget-'namn'"
+os.makedirs(BASE_PATH, exist_ok=True)
 
         
 def ränta_på_ränta():
@@ -23,7 +27,20 @@ def ränta_på_ränta():
           f"Total summa = {utr:1f} Kr")
     return svar
 
-#def sparmål():
+def sparmål():
+    namn=(input("Ange ditt användarnamn: "))
+    sparmål=(input("Ange ditt sparmål: (Tex. Ny bil, resa, buffert) "))
+    målbelopp=int(input("Ange ditt målbelopp: (Hur mycket kostar det du vill spara till?) "))
+    månadssparande=int(input("Ange ditt månadssparande: (Hur mycket kan du spara varje månad?) "))
+
+    with open(BASE_PATH + f"{namn}_sparmål.json", "a", encoding="utf-8") as f:
+        f.write(json.dumps(f"Sparmål {sparmål}", ensure_ascii=False) + "\n")
+        f.write(json.dumps(f"Målbelopp: {målbelopp} Kr", ensure_ascii=False) + "\n")
+        f.write(json.dumps(f"Månadssparande: {månadssparande} Kr", ensure_ascii=False) + "\n")
+        f.write(json.dumps(f"Du kommer nå ditt sparmål om {målbelopp/månadssparande:.1f} månader", ensure_ascii=False) + "\n")
+        f.write(json.dumps(f"Detta är ungefär {målbelopp/månadssparande/12:.1f} år", ensure_ascii=False) + "\n")
+        print(Fore.GREEN("Sparmål skapat.."))
+        Fore.RESET
     
 
 def kalkylator():
@@ -44,7 +61,6 @@ def kalkylator():
         print ("Svar: ",math.sqrt(x))
 
 
-
 while True:
     print("\n***Finans-meny***\n",
         "1. Räkna ränta-på-ränta\n",
@@ -56,7 +72,7 @@ while True:
     if menyval==1:
         ränta_på_ränta()
     elif menyval==2:
-        print("Kommer snart...")
+        sparmål()
     elif menyval==3:
         kalkylator()
     elif menyval==4:

@@ -80,10 +80,10 @@ def körjournal():
 
 
     data={
-        "\nDatum": datum,
+        "Datum": datum,
         "Regnummer":regnr_journal,
         "Start": start,
-        "\nDestination": dest,
+        "Destination": dest,
         "Sträcka": sträcka,
         "Förbrukning": bränsle,
         "Snittförbrukning": mil_pris,

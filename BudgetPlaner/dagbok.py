@@ -14,7 +14,8 @@ def ny_dagbok(): #Skriv ny dagbok, finns ingen fil skapas det en. Nya entrys lä
 
             with open(BASE_PATH + f"{namn}.txt", "a", encoding="utf-8") as f:
                 f.write(f"{ts}: {cont} \n")
-                print("Inlägg skapat..")
+                print(Fore.GREEN+("Inlägg skapat.."))
+                Fore.RESET
 
 def open_d():
             namn=input("Ange ditt användarnamn: ").strip() #Öppna dagbok
@@ -28,9 +29,11 @@ def remove_d():
 
         if os.path.exists(fil):
                 os.remove(fil)
-                print("Filen är nu raderad..")
+                print(Fore.GREEN+("Filen är nu raderad.."))
+                Fore.RESET
         else:
-                print("Filen hittades inte, har du verkligen skrivit rätt filnamn?")
+                print(Fore.RED+("Filen hittades inte, har du verkligen skrivit rätt filnamn?"))
+                Fore.RESET
                          
 while True:
         print("\n---Dagboksmeny---\n", #Meny för dagboksdel
@@ -51,6 +54,7 @@ while True:
 
         elif val==4:
                 print("Återgår till huvudmenyn...")
+                Fore.RESET
                 import main
              
     
