@@ -1,0 +1,26 @@
+This program is only available in Swedish atm.
+
+Detta är Budgetplaner. Ett program med inloggningsfunktion som sparar användarnamn och lösenord i en fil och sen hämtar relevant information för att logga in en användare.
+Tanken bakom hela programmet är att vässa mina kunskaper i python och för att jag tycker det är kul att skapa nya saker som man också kan ha nytta av. 
+
+Vad gör programmet då?
+Dagboksfunktion: Användare kan logga inlägg, läsa inlägg eller radera inlägg. Inläggen skrivs automatiskt med datum och tidsstämpel. Allt hamnar i ett .txt-dokument som användaren har fritt förfogande över.
+
+Budgetfunktion: Ganska basic där användaren får 18 frågor som berör inkomst, utgifter, månad budgeten avser. Sen får man i en Json-fil svart-på-vitt var utgifterna tar vägen och hur mycket som är kvar.
+Jag har också byggt in en finess som lite bekymmersamt talar om för användaren att "dina utgifter överstiger inkomsten" eftersom det kan vara hög tid att strypa utgifterna och komma på ekonomisk rätsida.
+En tanke här var också att låta en AI ge användaren spartips och justeringar, dock har jag inte den kunskapen att implementera det i dagsläget, men tanken känns rolig. I budgetfunktionen finns även planer på 
+att lägga till sparmål och gå in lite mer på hur man bäst kan tänka ekonomiskt långsiktigt. Observera att jag INTE har ekonomisk utbildning utan bara har ett starkt intresse för området.
+
+Finansverktyg: Här har vi just nu bara en ränta-på-ränta kalkylator samt en basic kalkylator. 
+
+Verktyg: Filen som heter "tools.py" ska senare bli en händig verktygslåda med enhetskonverterare bland annat.
+
+Bilkostnader: Det här var från början ett eget program som jag inte lagt upp på Github från början. Jag har använt det själv i liten skala för att logga de reparationer eller servicear jag gör på min bil.
+Här finns också något som heter "kunskapsbanken" och där tänkte jag samla bra information eller data om specifika bilar. Vätskemängder, däckdimensioner, vikter, prestanda, kuriosa osv.
+Än så länge gör den funktionen inte så mycket mer än att skapa en .txt-fil, detsamma gäller "bildata".
+
+Jag är inte helt 100 färdig med hela programmet än. Det finns funktioner i bland annat "finance-tools" som inte är helt klara än, sen finns det förmodligen nån bugg som jag inte upptäckt än. 
+Gör du det får du hemskt gärna säga till :)
+
+Tack för mig så länge!
+//Vincent Bergengren
