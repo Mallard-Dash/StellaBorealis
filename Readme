@@ -21,5 +21,8 @@ V 1.1
 Nu har jag fixat till de flesta skavanker samt gjort klart en ny sida som heter "tools". Där kan man räkna fram olika enheter såsom fahrenheit till celsius osv. Det finns även en lösenordsgenerator
 där man kan få fram ett slumpvalt lösenord som man kan använda vart man vill.
 
+V 1.2
+Nu är inloggningen ändrad, och inloggningsuppgifterna sparas nu i en sql-databas istället.
+
 Tack för mig så länge!
 //Vincent Bergengren
