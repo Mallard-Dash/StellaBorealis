@@ -2,46 +2,45 @@
 import os
 import colorama
 from colorama import init, Fore, Style
+import sqlite3
+from colorama import init
+init(autoreset=True)
 BASE_PATH = os.path.join(os.getcwd(), "Users-") #Här sparas användaruppgifterna.
 os.makedirs(BASE_PATH, exist_ok=True)
 
+# 1) Databas & tabell
+conn = sqlite3.connect("users.db")
+c = conn.cursor()
+c.execute("""
+CREATE TABLE IF NOT EXISTS users (
+    username TEXT PRIMARY KEY,
+    password TEXT NOT NULL
+)
+""")
+conn.commit()
 
-def login(): #Inloggfunktion med felhantering.
-    print("\n--- Logga in till Budgetplaner ---")
-    user = input("Ange ditt namn: ").strip()
-    try:
-        password =(input("Ange ditt lösenord: ")).strip()
-    except ValueError:
-        print(Fore.RED+("Fel lösenord, försök igen!"))
-        Fore.RESET  
-        return None
-
-    try:
-        with open(BASE_PATH + "users.txt", "r", encoding="utf-8") as f:
-                    for rad in f:
-                        if f"Namn: {user}" in rad and f"Lösenord: {password}" in rad:
-                            delar = rad.strip().split(", ")
-                            namn = delar[0].split(": ")[1]
-                            pinkod = (delar[0].split(": ")[1])
-                            print(f"Välkommen {user}")
-                            import main
-    except FileNotFoundError:
-        print(Fore.RED+("Användarfilen kunde inte hittas."))
-        Fore.RESET
-        return None
+def login():
+    user = input("Användarnamn: ")
+    pw   = input("Lösenord: ")
+    c.execute("SELECT 1 FROM users WHERE username=? AND password=?", (user, pw))
+    if c.fetchone():
+        print("Inloggad!")
+    else:
+        print("Fel användarnamn eller lösenord.")
         
-def nytt_konto(): #Funktion för att skapa nytt konto.
-    import os
-    user=(input("Ange ett användarnamn: ")).strip()
-    password=(input("Ange ett lösenord: ")).strip()
-
-    with open(BASE_PATH + "users.txt", "a", encoding="utf-8") as fil:
-            fil.write(f"Namn: {user}, Lösenord: {password}\n")
-            print(Fore.GREEN+(f"Användaren {user} är nu skapad!"))
-            Fore.RESET
+def nytt_konto():
+    user = input("Välj användarnamn: ")
+    pw   = input("Välj lösenord: ")
+    try:
+        c.execute("INSERT INTO users (username, password) VALUES (?,?)", (user, pw))
+        conn.commit()
+        print("Konto skapat! Du kan nu logga in.")
+    except sqlite3.IntegrityError:
+        print("Användarnamnet är upptaget.")
 
 
 while True: #Inlogg-meny
+    Fore.RESET
     print("***Inloggnings-sida***\n" \
     "1. Logga in\n" \
     "2. Skapa konto\n" \
@@ -58,3 +57,5 @@ while True: #Inlogg-meny
         break
     else:
         print("Ange ett menyval mellan 1-3")
+
+conn.close()
