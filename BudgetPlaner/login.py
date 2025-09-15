@@ -25,6 +25,7 @@ def login():
     c.execute("SELECT 1 FROM users WHERE username=? AND password=?", (user, pw))
     if c.fetchone():
         print("Inloggad!")
+        import main
     else:
         print("Fel användarnamn eller lösenord.")
         
