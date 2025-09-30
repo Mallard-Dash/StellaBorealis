@@ -1,4 +1,6 @@
-This program is only available in Swedish atm.
+This program is now under remodelling and will be entirely in english with polished features soon...
+
+Firstly, the name BudgetPlaner is now changed to StellaBorealis. I'm gonna let the readme stay put until the new update is done.
 
 Detta är Budgetplaner. Ett program med inloggningsfunktion som sparar användarnamn och lösenord i en fil och sen hämtar relevant information för att logga in en användare.
 Tanken bakom hela programmet är att vässa mina kunskaper i python och för att jag tycker det är kul att skapa nya saker som man också kan ha nytta av. 

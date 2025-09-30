@@ -107,7 +107,6 @@ while True:
     "7. Avsluta program\n")
 
     menyval=int(input("Ange ett menyval: "))
-
     if menyval==1:
         open_servicebook()
     elif menyval==2:

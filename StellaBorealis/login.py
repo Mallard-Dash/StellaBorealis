@@ -1,4 +1,4 @@
-#loginsidan. Om en användare inte finns så kan man skapa ett konto. Man loggar in med ett lösenord och ett användarnamn.
+#FROM SEPTEMBER THE 30TH BudgetPlaner is named StellaBorealis
 import os
 import colorama
 from colorama import init, Fore, Style
@@ -7,10 +7,10 @@ from colorama import init
 import hashlib
 import getpass
 init(autoreset=True)
-BASE_PATH = os.path.join(os.getcwd(), "Users-") #Här sparas användaruppgifterna.
+BASE_PATH = os.path.join(os.getcwd(), "Users-") #This is the user database
 os.makedirs(BASE_PATH, exist_ok=True)
 
-# 1) Databas & tabell
+#This is the sqlite3 database table
 conn = sqlite3.connect("users.db")
 c = conn.cursor()
 c.execute("""
@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS users (
 """)
 conn.commit()
 
-def login():
+def login(): #Login function
     user = input("Username: ")
     pw   = input("Password: ")
     c.execute("SELECT 1 FROM users WHERE username=? AND password=?", (user, pw))
@@ -31,7 +31,7 @@ def login():
     else:
         print("Oops! Your password OR/AND username is not correct.")
 
-def check_username(user: str):
+def check_username(user: str): #Function to check if username meets requirements
         user = user.strip()
         if not user: return False, "Username cannot be empty."
         if len(user) < 4: return False, "Username must be at least 4 characters."
@@ -39,22 +39,22 @@ def check_username(user: str):
         if len(user) > 25: return False, "Username max length is 25."
         return True, ""
 
-def check_password(pw: str):
+def check_password(pw: str): #function to check if password meets requirements AND is also hashed-out
     if not pw: return False, "Password cannot be empty."
     if any(ch.isspace() for ch in pw): return False, "Password cannot contain spaces."
-    if not (4 <= len(pw) <= 25): return False, "Password must be 4–25 characters."
+    if not (4 <= len(pw) <= 25): return False, "Password must be 4-25 characters."
     return True, ""
         
-def nytt_konto():
+def new_user():
     while True:
         try:
-            user = input("Choose username (4–25 characters): ").strip()
+            user = input("Choose username (4-25 characters): ").strip()
             ok, msg = check_username(user)
             if not ok:
                 print(msg)
                 continue
 
-            pw = getpass.getpass("Choose a password (4–25 characters): ")
+            pw = getpass.getpass("Choose a password (4-25 characters): ")
             ok, msg = check_password(pw)
             if not ok:
                 print(msg)
@@ -81,7 +81,7 @@ def nytt_konto():
 
 while True: #Login
     Fore.RESET
-    print("***Inloggnings-sida***\n" \
+    print("***WELCOME***\n" \
     "1. Log in\n" \
     "2. Create account\n" \
     "3. Exit")
