@@ -1,11 +1,10 @@
 #FROM SEPTEMBER THE 30TH BudgetPlaner is named StellaBorealis
 import os
-import colorama
 from colorama import init, Fore, Style
 import sqlite3
 from colorama import init
-import hashlib
 import getpass
+from banner import show_banner
 init(autoreset=True)
 BASE_PATH = os.path.join(os.getcwd(), "Users-") #This is the user database
 os.makedirs(BASE_PATH, exist_ok=True)
@@ -21,15 +20,24 @@ CREATE TABLE IF NOT EXISTS users (
 """)
 conn.commit()
 
+def main():
+    show_banner(animate=True, twinkle_frames=20, fps=9)
+    # …then show your login/menu
+
+if __name__ == "__main__":
+    main()
+
+
+
 def login(): #Login function
     user = input("Username: ")
     pw   = input("Password: ")
     c.execute("SELECT 1 FROM users WHERE username=? AND password=?", (user, pw))
     if c.fetchone():
-        print("Logged in!")
+        print(Fore.GREEN + "Logged in!")
         import main
     else:
-        print("Oops! Your password OR/AND username is not correct.")
+        print(Fore.RED + "Oops! Your password OR/AND username is not correct.")
 
 def check_username(user: str): #Function to check if username meets requirements
         user = user.strip()
@@ -62,44 +70,45 @@ def new_user():
 
             pw2 = getpass.getpass("Enter the password again: ")
             if pw != pw2:
-                print("The passwords do not match. Try again.")
+                print(Fore.RED + "The passwords do not match. Try again.")
                 continue
 
             try:
                 c.execute("INSERT INTO users (username, password) VALUES (?, ?)", (user, pw))
                 conn.commit()
-                print("User created!")
+                print(Fore.GREEN + "User created!")
                 break
             except sqlite3.IntegrityError:
-                print("Oh dear. This username is already taken, choose another.")
+                print(Fore.YELLOW + "Oh dear. This username is already taken, choose another.")
                 continue
 
         except KeyboardInterrupt:
-            print("\nCancelled by user.")
+            print("\nCancelled by user.") #Press ctrl+C to abort an ongoing process
             break
+
 
 
 while True: #Login
     Fore.RESET
-    print("***WELCOME***\n" \
+    print(Style.BRIGHT + "***WELCOME***\n" \
     "1. Log in\n" \
     "2. Create account\n" \
     "3. Exit")
     try:
         menyval=int(input("Enter a choice from 1-3: "))
     except ValueError:
-        print("Please enter an int from 1-3")
+        print(Fore.RED + "Please enter an int from 1-3")
         continue
 
     if menyval==1:
          login()
     elif menyval==2:
-        nytt_konto()
+        new_user()
     elif menyval==3:
-        print(Fore.YELLOW+("Bye... :)"))
+        print(Fore.BLUE +("Bye... :)"))
         Fore.RESET
         break
     else:
-        print("Wrong input. Please enter a value between 1-3")
+        print(Fore.RED +"Wrong input. Please enter a value between 1-3")
 
 conn.close()

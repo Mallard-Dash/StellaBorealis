@@ -1,8 +1,8 @@
-#Main-filen i programmet. Egentligen bara en meny för att välja dest.
-
+#StellaBorealis
 import math
 import colorama
 from colorama import init, Fore, Style
+init(autoreset=True)
 
 def main_menu():
     print("\n***Huvudmeny***\n" \
@@ -22,13 +22,13 @@ while True:
     if menyval==2:
         import finance_tools
     if menyval==3:
-        import bilkostnader
+        import vehicle
     if menyval==4:
-        import dagbok
+        import dairy
     if menyval==5:
         import tools
     if menyval==6:
-        print(Fore.YELLOW+("Du är nu utloggad..."))
+        print(Fore.BLUE+("Logging off...Bye :)"))
         Fore.RESET
         import login
     
