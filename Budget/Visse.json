@@ -1,0 +1,25 @@
+{
+  "user": "Visse",
+  "months": {
+    "2025-10": {
+      "incomes": [
+        {
+          "type": "contribution",
+          "amount": 18900.0,
+          "date": "2025-10-01"
+        }
+      ],
+      "expenses": [
+        {
+          "category": "Housing",
+          "label": "Rent",
+          "amount": 2400.0,
+          "date": "2025-10-01"
+        }
+      ],
+      "comments": [
+        "Summary for 2025-10: Incomes=18900.0, Expenses=2400.0, Balance=16500.0"
+      ]
+    }
+  }
+}

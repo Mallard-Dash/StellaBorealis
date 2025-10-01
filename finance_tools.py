@@ -3,6 +3,7 @@ import math
 import json
 import os
 from colorama import init, Fore, Style
+init(autoreset=True)
 
 BASE_PATH = os.path.join(os.getcwd(), "Budget-")
 os.makedirs(BASE_PATH, exist_ok=True)
@@ -66,22 +67,29 @@ def calculator():
     elif opr == "root":
         print("Answer: ", math.sqrt(x))
 
+def fin_tools_menu():
+    while True:
+        print(
+            "\n***Finance Menu***\n",
+            "1. Calculate compound interest\n",
+            "2. Set a savings goal\n",
+            "3. Open the calculator\n",
+            "4. Back to main menu\n",)
+        try:
+            menu_choice = int(input("Enter a menu choice between 1-4: "))
+        except ValueError:
+            print(Fore.RED + "Please enter an integer between 1-4")
+        if menu_choice == 1:
+            compound_interest()
+        elif menu_choice == 2:
+            savings_goal()
+        elif menu_choice == 3:
+            calculator()
+        elif menu_choice == 4:
+            import main
+            main.run_app()
+        else:
+            print(Fore.RED + "Please choose a number between 1-4")
 
-while True:
-    print(
-        "\n***Finance Menu***\n"
-        "1. Calculate compound interest\n"
-        "2. Set a savings goal\n"
-        "3. Open the calculator\n"
-        "4. Back to main menu\n"
-    )
-    menu_choice = int(input("Enter a menu choice between 1-4: "))
-
-    if menu_choice == 1:
-        compound_interest()
-    elif menu_choice == 2:
-        savings_goal()
-    elif menu_choice == 3:
-        calculator()
-    elif menu_choice == 4:
-        import main
+if __name__ == "__main__":
+    fin_tools_menu()

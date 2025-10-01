@@ -1,42 +1,56 @@
-# StellaBorealis
+# 🌌 StellaBorealis
 
-StellaBorealis is a personal finance and productivity tool designed to help you take control of your economy and everyday life.  
-It started out as **BudgetPlaner**, but is currently being remodelled, polished, and fully translated into English.  
+**StellaBorealis** is a personal finance and productivity tool designed to help you take control of your economy and everyday life.  
+It started out as **BudgetPlaner**, and is now remodeled, polished, and fully translated into English.  
+
+---
 
 ## ✨ Features
 
-- **Budgeting**  
+- **💰 Budgeting**  
   Track income and expenses, and store your monthly budget in structured JSON files.  
 
-- **Financial tools**  
+- **📊 Financial tools**  
   - Compound interest calculator  
   - Savings goal tracker  
   - General calculator  
 
-- **Vehicle management**  
-  Keep records of your vehicles, including:  
+- **🚗 Vehicle management**  
+  Keep detailed records of your vehicles, including:  
   - Service history  
   - Mileage and travel data  
   - Fuel and consumption  
 
-- **Diary function**  
+- **📓 Diary function**  
   Write and save daily entries to log your progress, thoughts, or financial notes.  
 
-- **Everything connected**  
-  Each module works on its own, but together they create a full ecosystem with **economy and budgeting** as the main focus.  
+- **🔗 Connected ecosystem**  
+  Each module works independently, but together they form a complete system with **economy and budgeting** as the main focus.  
+
+---
 
 ## 🚧 Work in Progress
 
-This program is under active development:  
+### ✅ Version 2.0 (current)
 - Full English translation of code and user interface  
 - Refactored and polished features  
-- Better structure with classes and modular files  
+- Improved structure with classes and modular files  
+
+### 🌠 Version 3.0 (planned)
+- Graphical interface (GUI)  
+- Budget AI for personalized insights and feedback  
+- Additional features and ideas still to come...  
+
+---
 
 ## 📂 Tech Stack
 
-- **Python 3**  
-- **JSON** for data storage  
-- SQlite3 (user management and extended data handling)  
-- Console-based interface (Tkinter GUI may be added later)  
+- **🐍 Python 3**  
+- **🗂️ JSON** for data storage  
+- **🗄️ SQLite3** (user management and extended data handling)  
+- **🖥️ Console-based interface** (GUI with Tkinter or PyQt planned for the future)  
+
+---
 
 ## 🚀 Getting Started
+

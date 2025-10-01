@@ -215,6 +215,6 @@ def show_banner(animate=True, aurora_lines=8, twinkle_lines=3, twinkle_frames=24
     if clear_after:
         _clear_screen()
 
-# ------------- Demo -------------
+# Demo 
 if __name__ == "__main__":
     show_banner()
